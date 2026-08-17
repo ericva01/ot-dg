@@ -1,0 +1,3 @@
+echo "$ADMIN_PASSWORD"
+LzeOYkomGKv02TEkSgy2z+QpRPQUARN8
+

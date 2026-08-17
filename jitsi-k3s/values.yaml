@@ -1,0 +1,56 @@
+tz: Asia/Phnom_Penh
+
+# CHANGE THIS TO YOUR REAL DOMAIN
+publicURL: "https://unity-meet.ericva.site"
+
+# Because you're currently using :latest
+image:
+  pullPolicy: IfNotPresent
+
+
+# =====================================
+# YOUR CUSTOM JITSI WEB
+# =====================================
+web:
+  replicaCount: 1
+
+  image:
+    repository: ericva/jitsi-meet-web
+    tag: "v3.0.8"
+
+  service:
+    type: ClusterIP
+    port: 80
+
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+
+    hosts:
+      - host: unity-meet.ericva.site
+        paths:
+          - "/"
+
+    tls:
+      - secretName: unity-meet-tls
+        hosts:
+          - unity-meet.ericva.site
+
+
+# =====================================
+# JVB
+# =====================================
+jvb:
+  replicaCount: 1
+
+  # CHANGE THIS
+  publicIPs:
+    - "136.110.6.149"
+
+  disableStun: true
+
+  useHostPort: true
+  UDPPort: 10000
+
+  service:
+    enabled: false
