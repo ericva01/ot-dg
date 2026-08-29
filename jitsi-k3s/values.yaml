@@ -15,7 +15,7 @@ web:
   replicaCount: 1
 
   image:
-    repository: ericva/jitsi-meet-web
+    repository: 
     tag: "v3.0.8"
 
   service:
@@ -45,7 +45,7 @@ jvb:
 
   # CHANGE THIS
   publicIPs:
-    - "136.110.6.149"
+    - ""
 
   disableStun: true
 
